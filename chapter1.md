@@ -85,6 +85,8 @@ success_msg("Nice work.  Notice that expression results depend on the value asso
 ```
 
 
+--- type:NormalExercise xp:100 skills:1 key:04acfaaf97
+
 ## Order of precedence PEMDAS
 
 Let's get comfortable with how order of precedence occurs
@@ -160,6 +162,8 @@ success_msg("Nice work.  Looking at PEMDAS, E indicates exponentiation first lef
 
 ```
 
+
+--- type:NormalExercise xp:100 skills:1 key:957c32707f
 
 ## Order of precedence PEMDAS (2)
 
@@ -241,6 +245,92 @@ test_student_typed("3 + 6 * 7 - 2 ^ 4", not_typed_msg = "Your final expression s
 
 test_error()
 
-success_msg("Nice work.  Looking at PEMDAS, E indicates exponentiation first left to right, then Multiplication and Division.")
+success_msg("Nice work.  Looking at PEMDAS, E indicates exponentiation first left to right, then Multiplication, then Addition and Subtraction.")
+
+```
+
+
+--- type:NormalExercise xp:100 skills:1 key:6ce8ebff12
+
+## Evaluating Expression
+
+Let's assign 4 expressions to 4 variables
+
+Complete all instructions in the R Script pane
+
+*** =instructions
+
+In the editor on the right, complete the code according to the following instructions:
+
+- Assign the value of first expression to variable *a*
+- Assign the value of second expression to variable *b*
+- Assign the value of third expression to variable *c*
+- Assign the value of fourth expression to variable *d*
+- Press Submit Answer, and look at result for each to understand what occurred
+
+*** =hint
+- Use assignment operator and appropriate variable name for each instruction
+
+*** =pre_exercise_code
+```{r}
+# no pec
+```
+
+*** =sample_code
+```{r}
+
+# Assign value of expression to variable a
+____ ____ (-4)^2 + 2
+
+# Assign value of expression to variable b
+____ ____ -4^2 + 2
+
+# Assign value of expression to variable c
+____ ____ (-4)^(2+2)
+
+# Assign value of expression to variable d
+____ ____ -4^(2+2)
+
+
+```
+
+*** =solution
+```{r}
+# Assign value of expression to variable a
+a <- (-4)^2 + 2
+
+# Assign value of expression to variable b
+b <- -4^2 + 2
+
+# Assign value of expression to variable c
+c <- (-4)^(2+2)
+
+# Assign value of expression to variable d
+d <- -4^(2+2)
+
+
+```
+
+*** =sct
+```{r}
+test_object("a", eq_condition="equal",
+            undefined_msg = "Be sure to assign value to variable *a*.",
+            incorrect_msg = "Look at your value assigned to *a* and compare to instructions.  The assigned value is important")
+
+test_object("b", eq_condition="equal",
+            undefined_msg = "Be sure to assign value to variable *b*.",
+            incorrect_msg = "Look at your value assigned to *b* and compare to instructions.  The assigned value is important")
+
+test_object("c", eq_condition="equal",
+            undefined_msg = "Be sure to assign value to variable *c*.",
+            incorrect_msg = "Look at your value assigned to *c* and compare to instructions.  The assigned value is important")
+
+test_object("d", eq_condition="equal",
+            undefined_msg = "Be sure to assign value to variable *d*.",
+            incorrect_msg = "Look at your value assigned to *d* and compare to instructions.  The assigned value is important")
+
+test_error()
+
+success_msg("Nice work.  Look at each result closely and try to interpret what expression was evaluated.")
 
 ```
