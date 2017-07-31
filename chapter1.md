@@ -334,3 +334,45 @@ test_error()
 success_msg("Nice work.  Look at each result closely and try to interpret what expression was evaluated.")
 
 ```
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:37c9d82c55
+## Which variable matches desired expression
+
+Which variable *a*, *b*, *c*, *d* matches to this desired outcome?
+- *square negative 4 and add 2 to the result*
+
+Variables created in previous exercise already exist
+ 
+*** =instructions
+- *Value assigned to a, (-4)^2 + 2*
+- *Value assigned to b, -4^2 + 2*
+- *Value assigned to c, (-4)^(2+2)*
+- *Value assigned to d, -4^(2+2)*
+
+*** =hint
+Look at expression for each variable and the result, select the one that matches desired outcome
+- You can evaluate by entering variable name and pressing enter in R console pane
+
+*** =pre_exercise_code
+```{r}
+# The pre exercise code runs code to initialize the user's workspace.
+# You can use it to load packages, initialize datasets and draw a plot in the viewer
+
+a <- (-4)^2 + 2
+
+b <- -4^2 + 2
+
+c <- (-4)^(2+2)
+
+d <- -4^(2+2)
+```
+
+*** =sct
+```{r}
+
+msg_bad = "That is not correct!"
+msg_success = "Exactly! Parentheses ensure the value -4 is squared, and then using PEMDAS addition of 2 occurs."
+test_mc(1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
+```
+
