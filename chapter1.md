@@ -559,7 +559,7 @@ test_object("z", eq_condition="equal",
             undefined_msg = "Do not modify assignment statement for *z*.",
             incorrect_msg = "Do not modify assignment statement for *z*.  The assigned value is important")
 
-test_output_contains("numeric", incorrect_msg = "Check your evaluation of *class* for *x*.")
+test_function_result("class", incorrect_msg = "Check your evaluation of *class* for *x*.")
 
 test_output_contains("TRUE", incorrect_msg = "Check your comparison of *x* and *z*; be sure to use the double == operator.")
 
@@ -605,7 +605,7 @@ In the editor on the right, complete the code according to the following instruc
 ```{r}
 
 # Assign the data on the right to the variable x on the left using the assignment operator
-x ____ 1:1000
+x ____ 2
 
 # Use class() function to evaluate the class of the resulting structure.  Did anything unexpected happen?
 ____(x)
@@ -634,7 +634,7 @@ ____(x,z)
 *** =solution
 ```{r}
 # Assign the data on the right to the variable x on the left using the assignment operator
-x <- 1:1000
+x <- 2
 
 # Use class() function to evaluate the class of the resulting structure.  Did anything unexpected happen?
 class(x)
@@ -675,7 +675,7 @@ test_object("z", eq_condition="equal",
             undefined_msg = "Do not modify assignment statement for *z*.",
             incorrect_msg = "Do not modify assignment statement for *z*.  The assigned value is important")
 
-test_output_contains("numeric", incorrect_msg = "Check your evaluation of *class* for *x*.")
+test_function_result("class", incorrect_msg = "Check your evaluation of *class* for *x*.")
 
 test_output_contains("FALSE", incorrect_msg = "Check your comparison of *x* and *z*; be sure to use the double == operator.")
 
@@ -683,7 +683,125 @@ test_function_result("all.equal")
 
 test_error()
 
-success_msg("Nice work.  When we assigned the value to *x* and used the *class()* function, we should have observed that the class is numeric.  Atomic type is about individual elements while class is about how elements are grouped.  This time however we also see that *x* is a vector with many numeric values.  When we run the same operations we ran previously, every element of x has the same operation applied.  x is called a vector.  This time what we see is that some elements in the reverse operation do not return to their original value.  Real numbers stored in computers are approximated, so we cannot always count on comparing with == to get TRUE result.  It is better to rely on functions like *all.equal()* that support some level of tolerance to evaluate.")
+success_msg("Nice work.  When we assigned the value to *x* and used the *class()* function, we observe that the class is numeric again.  This time what we see is that when we reverse operation *x* and *z* are not equal although they appear in display to be the same.  Real numbers stored in computers are approximated, so we cannot always count on comparing with == to get TRUE result.  It is better to rely on functions like *all.equal()* that support some level of tolerance to evaluate.")
+
+```
+
+
+--- type:NormalExercise xp:100 skills:1 key:7c5a84e3df
+
+## What Does Equal Mean? (3)
+
+One last exercise to expand our understanding of R and data.
+
+Complete all instructions in the R Script pane.
+
+*** =instructions
+
+In the editor on the right, complete the code according to the following instructions:
+
+- Use the assignment operator to assign the result on right to variable *x*.  The syntax on the right is 'c'ombining the data values inside parentheses together.
+- Use the *class()* function to evaluate the class of the resulting structure.  Notice that this is not the same as the 'atomic' type.  Class refers to the full grouping of data.
+- Leave the commands assigning values to *y* and *z* as they are.
+- Print the contents of *x* by entering *x* on its own
+- Print the contents of *z* by entering *z* on its own
+- Use the *==* operator to compare the value of *x* and *z*.  What happens?
+- Use the *all.equal()* function to compare every element of both *x* and *z* to see if all are equal.  What happens?
+- Press Submit Answer
+
+*** =hint
+- Follow the prompts above.  Although you may not fully understand the syntax, focus on what is stored in each variable.
+
+
+*** =pre_exercise_code
+
+```{r}
+# no pec
+```
+
+*** =sample_code
+```{r}
+
+# Assign the data on the right to the variable x on the left using the assignment operator
+x ____ 1:10
+
+# Use class() function to evaluate the class of the resulting structure.  Did anything unexpected happen?
+____(x)
+
+# Calculate the atan() of the reciprocal
+y <- atan(1/x)
+
+# Calculate the tan of y, and then take the reciprocal
+z <- 1/tan(y)
+
+# Print the contents of x
+____
+
+# Print the contents of z
+____
+
+# Use the == operator to compare the value of x and z.  
+x ____ z
+
+# Use all.equal() to compare every element of x and z.
+____(x,z,tolerance=0)
+
+
+```
+
+*** =solution
+```{r}
+# Assign the data on the right to the variable x on the left using the assignment operator
+x <- 1:10
+
+# Use class() function to evaluate the class of the resulting structure.  Did anything unexpected happen?
+class(x)
+
+# Calculate the atan of the reciprocal
+y <- atan(1/x)
+
+# Calculate the tan of y, and then the reciprocal
+z <- 1/tan(y)
+
+# Print the contents of x
+x
+
+# Print the contents of z
+z
+
+# Use the == operator to compare the value of x and z.  
+x == z
+
+# Use all.equal() to compare every element of x and z.
+all.equal(x,z,tolerance=0)
+
+
+
+```
+
+*** =sct
+```{r}
+test_object("x", eq_condition="equal",
+            undefined_msg = "Be sure to assign value to variable *x*.",
+            incorrect_msg = "Look at your value assigned to *x* and compare to instructions.  The assigned value is important")
+
+test_object("y", eq_condition="equal",
+            undefined_msg = "Do not modify assignment statement for *y*.",
+            incorrect_msg = "Do not modify assignment statement for *y*.  The assigned value is important")
+
+test_object("z", eq_condition="equal",
+            undefined_msg = "Do not modify assignment statement for *z*.",
+            incorrect_msg = "Do not modify assignment statement for *z*.  The assigned value is important")
+
+test_function_result("class", incorrect_msg = "Check your evaluation of *class* for *x*.")
+
+test_output_contains("FALSE", incorrect_msg = "Check your comparison of *x* and *z*; be sure to use the double == operator.")
+
+test_function_result("all.equal")
+
+test_error()
+
+success_msg("Nice work.  This time when we create *x*, we created what is called a vector.  Vectors combine multiple values of same atomic data type together, and *class* refers to the structure of the resulting vector.  This time the resulting *class* was inferred by R to be integer as each element was integer value.  Even single elements are vectors in R, so our previous exercises also resulted in vectors.  When we run the same operations we ran previously, every element of x has the same operation applied.  When we compared *x* and *z*, we generated a logical vector where each element aligns to elements of *x* and indicate if that element is equivalent to *z*.  We can still use *all.equal()* to compare as the comparison is done for all entries in the logical vector.  If all result in TRUE within tolerance, the result is also TRUE.  With tolerance of 0, we can see that results are not identical.")
 
 ```
 
