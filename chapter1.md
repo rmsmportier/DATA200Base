@@ -376,3 +376,315 @@ msg_success = "Exactly! Parentheses ensure the value -4 is squared, and then usi
 test_mc(1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
 ```
 
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:0ae4eb0240
+## What Is the Data Type?
+
+Four variables *a*, *b*, *c*, and *d* have been pre-loaded into your R session.  
+
+In the R Console, use *typeof(a)*, *typeof(b)*, etc. to assist in answering the following.
+
+Which of the following describes the "atomic" type for each variable?
+ 
+*** =instructions
+- *a* is *double*, *b* is *integer*, *c* is *logical*, and *d* is *character*
+- *a* is *integer*, *b* is *integer*, *c* is *character*, and *d* is *logical*
+- *a* is *logical*, *b* is *character*, *c* is *double*, and *d* is *integer*
+- *a* is *character*, *b* is *logical*, *c* is *integer*, and *d* is *double*
+
+*** =hint
+Evaluate the type of each using *typeof()* function. Select the one that matches desired outcome
+
+*** =pre_exercise_code
+```{r}
+# The pre exercise code runs code to initialize the user's workspace.
+# You can use it to load packages, initialize datasets and draw a plot in the viewer
+
+a <- TRUE
+
+b <- "testing"
+
+c <- 4.52
+
+d <- 5L
+```
+
+*** =sct
+```{r}
+
+msg_bad = "That is not correct!"
+msg_success = "Exactly! *typeof()* always provides the 'atomic' type of individual data values.  As we begin to learn more advanced data structures, these 'atomic' types are the foundation for more advanced data."
+test_mc(3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
+```
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:d6ad617438
+## What Is In Your Workspace?
+
+Data has been pre-loaded into your R session.  
+
+In the R Console, use *ls()* to assist in answering the following.
+
+How many variables have been pre-loaded into your environment?
+ 
+*** =instructions
+- 4
+- 3
+- 7
+- 2
+
+*** =hint
+Use *ls()* to see what is in your workspace
+
+*** =pre_exercise_code
+```{r}
+# The pre exercise code runs code to initialize the user's workspace.
+# You can use it to load packages, initialize datasets and draw a plot in the viewer
+
+a <- 5
+
+b <- 6
+
+c <- 9
+
+d <- 10
+
+e <- 12
+
+f <- "Hi there"
+
+g <- TRUE
+
+```
+
+*** =sct
+```{r}
+
+msg_bad = "That is not correct!"
+msg_success = "Exactly! *ls()* allows us to see the data loaded into current workspace.  This can also be used in combination with *pattern* argument to find specific data."
+test_mc(3, feedback_msgs = c(msg_bad, msg_bad, msg_success, msg_bad))
+```
+
+--- type:NormalExercise xp:100 skills:1 key:586e1a4488
+
+## What Does Equal Mean?
+
+We are going to explore a bit and learn some new data concepts using R.
+
+Complete all instructions in the R Script pane.
+
+*** =instructions
+
+In the editor on the right, complete the code according to the following instructions:
+
+- Use the assignment operator to assign the result on right to variable *x*.  The syntax on the right is 'c'ombining the data values inside parentheses together.
+- Use the *class()* function to evaluate the class of the resulting structure.  Notice that this is not the same as the 'atomic' type.  Class refers to the full grouping of data.
+- Leave the commands assigning values to *y* and *z* as they are.
+- Print the contents of *x* by entering *x* on its own
+- Print the contents of *z* by entering *z* on its own
+- Use the *==* operator to compare the value of *x* and *z*.  What happens?
+- Press Submit Answer
+
+*** =hint
+- Follow the prompts above.  Although you may not fully understand the syntax, focus on what is stored in each variable.
+
+
+*** =pre_exercise_code
+
+```{r}
+# no pec
+```
+
+*** =sample_code
+```{r}
+
+# Assign the data on the right to the variable x on the left using the assignment operator
+x ____ 100
+
+# Use class() function to evaluate the class of the resulting structure.  Did anything unexpected happen?
+____(x)
+
+# Calculate the atan() of the reciprocal
+y <- atan(1/x)
+
+# Calculate the tan of y, and then take the reciprocal
+z <- 1/tan(y)
+
+# Print the contents of x
+____
+
+# Print the contents of z
+____
+
+# Use the == operator to compare the value of x and z.  
+x ____ z
+
+
+```
+
+*** =solution
+```{r}
+# Assign the data on the right to the variable x on the left using the assignment operator
+x <- 100
+
+# Use class() function to evaluate the class of the resulting structure.  Did anything unexpected happen?
+class(x)
+
+# Calculate the atan of the reciprocal
+y <- atan(1/x)
+
+# Calculate the tan of y, and then the reciprocal
+z <- 1/tan(y)
+
+# Print the contents of x
+x
+
+# Print the contents of z
+z
+
+# Use the == operator to compare the value of x and z.  
+x == z
+
+```
+
+*** =sct
+```{r}
+test_object("x", eq_condition="equal",
+            undefined_msg = "Be sure to assign value to variable *x*.",
+            incorrect_msg = "Look at your value assigned to *x* and compare to instructions.  The assigned value is important")
+
+test_object("y", eq_condition="equal",
+            undefined_msg = "Do not modify assignment statement for *y*.",
+            incorrect_msg = "Do not modify assignment statement for *y*.  The assigned value is important")
+
+test_object("z", eq_condition="equal",
+            undefined_msg = "Do not modify assignment statement for *z*.",
+            incorrect_msg = "Do not modify assignment statement for *z*.  The assigned value is important")
+
+test_output_contains("numeric", incorrect_msg = "Check your evaluation of *class* for *x*.")
+
+test_output_contains("TRUE", incorrect_msg = "Check your comparison of *x* and *z*; be sure to use the double == operator.")
+
+test_error()
+
+success_msg("Nice work.  When we assigned the value to *x* and used the *class()* function, we should have observed that the class is numeric.  Atomic type is about individual elements while class is about how elements are grouped.  Integer, double, and complex are all considered *numeric* class.  We completed an operation that we then reversed, and our result seems to have come out equal as we would expect.  Let's investigate further with next exercise.")
+
+```
+
+
+--- type:NormalExercise xp:100 skills:1 key:2b0a374801
+
+## What Does Equal Mean? (2)
+
+We are going to explore some more and learn some new data concepts using R.
+
+Complete all instructions in the R Script pane.
+
+*** =instructions
+
+In the editor on the right, complete the code according to the following instructions:
+
+- Use the assignment operator to assign the result on right to variable *x*.  The syntax on the right is 'c'ombining the data values inside parentheses together.
+- Use the *class()* function to evaluate the class of the resulting structure.  Notice that this is not the same as the 'atomic' type.  Class refers to the full grouping of data.
+- Leave the commands assigning values to *y* and *z* as they are.
+- Print the contents of *x* by entering *x* on its own
+- Print the contents of *z* by entering *z* on its own
+- Use the *==* operator to compare the value of *x* and *z*.  What happens?
+- Use the *all.equal()* function to compare every element of both *x* and *z* to see if all are equal.  What happens?
+- Press Submit Answer
+
+*** =hint
+- Follow the prompts above.  Although you may not fully understand the syntax, focus on what is stored in each variable.
+
+
+*** =pre_exercise_code
+
+```{r}
+# no pec
+```
+
+*** =sample_code
+```{r}
+
+# Assign the data on the right to the variable x on the left using the assignment operator
+x ____ 1:1000
+
+# Use class() function to evaluate the class of the resulting structure.  Did anything unexpected happen?
+____(x)
+
+# Calculate the atan() of the reciprocal
+y <- atan(1/x)
+
+# Calculate the tan of y, and then take the reciprocal
+z <- 1/tan(y)
+
+# Print the contents of x
+____
+
+# Print the contents of z
+____
+
+# Use the == operator to compare the value of x and z.  
+x ____ z
+
+# Use all.equal() to compare every element of x and z.
+____(x,z)
+
+
+```
+
+*** =solution
+```{r}
+# Assign the data on the right to the variable x on the left using the assignment operator
+x <- 1:1000
+
+# Use class() function to evaluate the class of the resulting structure.  Did anything unexpected happen?
+class(x)
+
+# Calculate the atan of the reciprocal
+y <- atan(1/x)
+
+# Calculate the tan of y, and then the reciprocal
+z <- 1/tan(y)
+
+# Print the contents of x
+x
+
+# Print the contents of z
+z
+
+# Use the == operator to compare the value of x and z.  
+x == z
+
+# Use all.equal() to compare every element of x and z.
+all.equal(x,z)
+
+
+
+```
+
+*** =sct
+```{r}
+test_object("x", eq_condition="equal",
+            undefined_msg = "Be sure to assign value to variable *x*.",
+            incorrect_msg = "Look at your value assigned to *x* and compare to instructions.  The assigned value is important")
+
+test_object("y", eq_condition="equal",
+            undefined_msg = "Do not modify assignment statement for *y*.",
+            incorrect_msg = "Do not modify assignment statement for *y*.  The assigned value is important")
+
+test_object("z", eq_condition="equal",
+            undefined_msg = "Do not modify assignment statement for *z*.",
+            incorrect_msg = "Do not modify assignment statement for *z*.  The assigned value is important")
+
+test_output_contains("numeric", incorrect_msg = "Check your evaluation of *class* for *x*.")
+
+test_output_contains("FALSE", incorrect_msg = "Check your comparison of *x* and *z*; be sure to use the double == operator.")
+
+test_function_result("all.equal")
+
+test_error()
+
+success_msg("Nice work.  When we assigned the value to *x* and used the *class()* function, we should have observed that the class is numeric.  Atomic type is about individual elements while class is about how elements are grouped.  This time however we also see that *x* is a vector with many numeric values.  When we run the same operations we ran previously, every element of x has the same operation applied.  x is called a vector.  This time what we see is that some elements in the reverse operation do not return to their original value.  Real numbers stored in computers are approximated, so we cannot always count on comparing with == to get TRUE result.  It is better to rely on functions like *all.equal()* that support some level of tolerance to evaluate.")
+
+```
+
+
